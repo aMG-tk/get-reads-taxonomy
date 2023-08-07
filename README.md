@@ -2,7 +2,7 @@
 # getRTax: a tool to extract reads from specific taxonomic groups from BAM files
 
 
-[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/genomewalker/get-reads-taxonomy?include_prereleases&label=version)](https://github.com/genomewalker/get-reads-taxonomy/releases) [![get-reads-taxonomy](https://github.com/genomewalker/get-reads-taxonomy/workflows/dReads_ci/badge.svg)](https://github.com/genomewalker/get-reads-taxonomy/actions) [![PyPI](https://img.shields.io/pypi/v/get-reads-taxonomy)](https://pypi.org/project/get-reads-taxonomy/) [![Conda](https://img.shields.io/conda/v/genomewalker/get-reads-taxonomy)](https://anaconda.org/genomewalker/get-reads-taxonomy)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/genomewalker/get-reads-taxonomy?include_prereleases&label=version)](https://github.com/genomewalker/get-reads-taxonomy/releases) [![get-reads-taxonomy](https://github.com/genomewalker/get-reads-taxonomy/workflows/getRTax_ci/badge.svg)](https://github.com/genomewalker/get-reads-taxonomy/actions) [![PyPI](https://img.shields.io/pypi/v/get-reads-taxonomy)](https://pypi.org/project/get-reads-taxonomy/) [![Conda](https://img.shields.io/conda/v/genomewalker/get-reads-taxonomy)](https://anaconda.org/genomewalker/get-reads-taxonomy)
 
 A simple tool to extract reads from specific taxonomic groups BAM files
 
@@ -108,7 +108,7 @@ To be able to extract reads from specific taxa and/or ranks, one needs to provid
 ACCESSION\td__Bacteria;l__Bacteria;k__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Enterobacteriaceae;g__Yersinia;s__Yersinia pestis
 ```
 
-`ACCESSION` is the reference accession in the BAM file. The taxonomy is separated by `;` and the taxonomic groups are separated by `__`. The taxonomic groups recognized by `dReads` in `--taxonomy-file` and `--rank` are:
+`ACCESSION` is the reference accession in the BAM file. The taxonomy is separated by `;` and the taxonomic groups are separated by `__`. The taxonomic groups recognized by `getRTax` in `--taxonomy-file` and `--rank` are:
   - **domain**: `d__`
   - **lineage**: `l__`
   - **kingdom**: `k__`
