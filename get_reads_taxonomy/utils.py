@@ -12,6 +12,7 @@ from get_reads_taxonomy.defaults import mdmg_header, valid_ranks, filterBAM_head
 from collections import defaultdict
 import re
 from itertools import chain
+from pathlib import Path
 
 log = logging.getLogger("my_logger")
 log.setLevel(logging.INFO)
@@ -307,31 +308,41 @@ def suppress_stdout():
 
 def create_output_files(prefix, bam, taxon=None, combined=False):
     if prefix is None:
-        prefix = bam.split(".")[0]
+        prefix = Path(bam).with_suffix("").name.split(".")[0]
+        
     # create output files
     out_files = defaultdict(defaultdict)
+    cwd = Path().resolve()
+
     for k, v in taxon.items():
         for i in v:
             r = splitkeep(i, "__")
             i = re.sub("[^0-9a-zA-Z]+", "_", r[1])
-            out_files[f"{k}{i}"]["fname"] = f"{prefix}.{k}{i}.fastq.gz"
+            out_files[f"{k}{i}"]["fname"] = os.path.join(
+                cwd, f"{prefix}.{k}{i}.fastq.gz"
+            )
 
             if os.path.exists(out_files[f"{k}{i}"]["fname"]):
                 out_files[f"{k}{i}"]["exists"] = True
             else:
                 out_files[f"{k}{i}"]["exists"] = False
-            out_files[f"{k}{i}_read_ids"]["fname"] = f"{prefix}.{k}{i}.read_ids.txt.gz"
+            out_files[f"{k}{i}_read_ids"]["fname"] = os.path.join(
+                cwd, f"{prefix}.{k}{i}.read_ids.txt.gz"
+            )
             if os.path.exists(out_files[f"{k}{i}_read_ids"]["fname"]):
                 out_files[f"{k}{i}_read_ids"]["exists"] = True
             else:
                 out_files[f"{k}{i}_read_ids"]["exists"] = False
 
-    out_files["fastq_combined"]["fname"] = f"{prefix}.fastq.gz"
+    out_files["fastq_combined"]["fname"] = os.path.join(cwd, f"{prefix}.fastq.gz")
     if os.path.exists(out_files["fastq_combined"]["fname"]):
         out_files["fastq_combined"]["exists"] = True
     else:
         out_files["fastq_combined"]["exists"] = False
-    out_files["fastq_combined_read_ids"]["fname"] = f"{prefix}.read_ids.txt.gz"
+
+    out_files["fastq_combined_read_ids"]["fname"] = os.path.join(
+        cwd, f"{prefix}.read_ids.txt.gz"
+    )
     if os.path.exists(out_files["fastq_combined_read_ids"]["fname"]):
         out_files["fastq_combined_read_ids"]["exists"] = True
     else:

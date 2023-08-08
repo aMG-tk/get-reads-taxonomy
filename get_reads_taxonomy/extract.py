@@ -19,7 +19,7 @@ def index_bam_file(bam, suffix, max_chr_length, threads=1):
     samfile = pysam.AlignmentFile(bam, "rb", threads=threads)
     if samfile.has_index():
         sorted_bam_index_bai = bam.replace(suffix, f"{suffix}.bam.bai")
-        sorted_bam_index_csi = bam.replace(suffix, f"{suffix}.bacsi")
+        sorted_bam_index_csi = bam.replace(suffix, f"{suffix}.bam.csi")
         if os.path.exists(sorted_bam_index_bai):
             os.remove(sorted_bam_index_bai)
         elif os.path.exists(sorted_bam_index_csi):

@@ -129,6 +129,7 @@ def main():
                 max_chr_length=max_chr_length,
                 threads=args.threads,
             )
+            samfile = pysam.AlignmentFile(bam, "rb", threads=args.threads)
 
     # rnames = defaultdict(int)
     # for aln in samfile.fetch(multiple_iterators=False, until_eof=True):
