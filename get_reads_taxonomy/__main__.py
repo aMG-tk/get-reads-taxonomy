@@ -171,7 +171,7 @@ def main():
 
     reads = get_read_by_taxa(
         bam=bam,
-        refs=refs[1:10],
+        refs=refs,
         refs_tax=refs_tax,
         threads=args.threads,
         chunksize=args.chunk_size,
