@@ -52,7 +52,7 @@ pip install -e .
 
 # Usage
 
-getRTax will take a TSV file produced from [metaDMG](https://metadmg-dev.github.io/metaDMG-core/) and extract the reads from a BAM file. One can select a list of taxa and ranks to extract the reads from.
+getRTax will take a BAM file and a taxonomy TSV file and extract the reads that map to each of the selected taxa. One can select a list of taxa and ranks to extract the reads from.
 
 For a complete list of options:
 
